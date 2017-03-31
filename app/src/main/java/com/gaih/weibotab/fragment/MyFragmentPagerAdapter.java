@@ -5,22 +5,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+
 /**
  * Created by Administrator on 2017/3/30.
  */
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
-    public final int COUNT = 5;
-    private String[] titles = new String[]{"Tab1", "Tab2", "Tab3", "Tab4", "Tab5"};
+    public final int COUNT = 4;
+    private String[] titles = new String[]{"评论","转发","点赞","私信"};
     private Context context;
 
     public MyFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }
-
     @Override
     public Fragment getItem(int position) {
+//        if (position==0){
+//            return new Fragment01();
+//        }
         return PageFragment.newInstance(position + 1);
     }
 

@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gaih.weibotab.MainActivity">
+    android:orientation="vertical">
 
+    <FrameLayout
+        android:id="@+id/id_content"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp" />
     <LinearLayout
+        android:id="@+id/id_ly_bottombar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/mTab"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/mBtn_main"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:tabMode="scrollable"/>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/mViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray">
-        </android.support.v4.view.ViewPager>
+            android:background="#7fa87f"
+            android:text="主页" />
 
+        <Button
+            android:id="@+id/mBtn_news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#7fa87f"
+            android:text="消息" />
+
+        <Button
+            android:id="@+id/mBtn_squ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#7fa87f"
+            android:text="广场" />
+
+        <Button
+            android:id="@+id/mBtn_set"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#7fa87f"
+            android:text="我" />
     </LinearLayout>
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
