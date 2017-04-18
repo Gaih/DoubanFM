@@ -1,5 +1,7 @@
 package com.gaih.weibotab;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.gaih.weibotab.DoubanFM.GetFmList;
+import com.gaih.weibotab.FirstTab.FragmentFm;
 import com.gaih.weibotab.fragment.Fragment01;
 import com.gaih.weibotab.fragment.Fragment02;
 import com.gaih.weibotab.fragment.MyFragmentPagerAdapter;
@@ -25,8 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBut_news;
     private Button mBut_squ;
     private Button mBut_set;
+    public static Context mContext;
+    public ProgressDialog mDialog;
 
-    Fragment01 mWeixin;
+    Fragment01 mDouban;
     Fragment02 mFriend;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBut_set.setOnClickListener(this);
         mBut_main.setOnClickListener(this);
         mBut_news.setOnClickListener(this);
-
+        mContext = MainActivity.this;
         setDefaultFragment();
 
     }
@@ -49,9 +55,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        mWeixin = new Fragment01();
-        transaction.replace(R.id.id_content, mWeixin);
+        mDouban = new Fragment01();
+        transaction.replace(R.id.id_content, mDouban);
         transaction.commit();
+
+//        FragmentFm Fm = new FragmentFm();
+//        GetFmList fmList = new GetFmList();
+//        fmList.getMainList(mContext,Fm.mHandler);
+//        mDialog = new ProgressDialog(mContext);
+//        mDialog.setTitle("正在登录");
+//        mDialog.setMessage("正在登陆服务器，请稍后...");
+//        mDialog.show();
     }
 
     @Override
@@ -61,12 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentTransaction transaction = fm.beginTransaction();
         switch (v.getId()){
             case R.id.mBtn_main:
-                if (mWeixin == null)
+                if (mDouban == null)
                 {
-                    mWeixin = new Fragment01();
+                    mDouban = new Fragment01();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
-                transaction.replace(R.id.id_content, mWeixin);
+                transaction.replace(R.id.id_content, mDouban);
                 break;
             case R.id.mBtn_news:
                 if (mFriend == null)
