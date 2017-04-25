@@ -14,10 +14,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +49,7 @@ public class FragmentFm extends Fragment {
     private MainPageAdapter mainAdapter;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager linearLayoutManager;
+    private SwipeRefreshLayout mSwipe;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +69,20 @@ public class FragmentFm extends Fragment {
     }
 
     private void initView() {
+        mSwipe = (SwipeRefreshLayout) view.findViewById(R.id.mSwipe);
+        mSwipe.setColorSchemeResources(R.color.google_blue, R.color.google_green, R.color.google_red, R.color.google_yellow);
+        mSwipe.setProgressViewOffset(false, 0, (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
+                        .getDisplayMetrics()));
+        mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                musicList.clear();
+                GetFmList fmList = new GetFmList();
+                fmList.getMainList(mContext,mHandler);
+            }
+        });
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         linearLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -105,7 +122,7 @@ public class FragmentFm extends Fragment {
     }
 
 
-    private Handler mHandler = new Handler() {
+    private Handler mHandler = new Handler(mContext.getMainLooper()) {
         public void handleMessage(Message msg) {//此方法在ui线程运行
             switch (msg.what) {
                 case 0:

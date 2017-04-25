@@ -10,4 +10,9 @@
     <color name="translucent_grey_300_96p">#F5E0E0E0</color>
     <color name="translucent_grey_900_96p">#F5212121</color>
     <color name="translucent_grey_700_96p">#F5616161</color>
+    <color name="google_red">#ea4335</color>
+    <color name="google_yellow">#fbbc05</color>
+    <color name="google_green">#34a853</color>
+    <color name="google_blue">#4285f4</color>
+    <color name="Micro_orange">#f65314</color>
 </resources>
