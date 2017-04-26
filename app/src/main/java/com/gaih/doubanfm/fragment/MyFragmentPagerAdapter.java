@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
-    private static final String[] mTitles = {"豆瓣FM", "歌单", "红心","我的"};
+    private static final String[] mTitles = {"兆赫", "列表", "红心","我的"};
     private ArrayList<android.app.Fragment> datas;
 
     public MyFragmentPagerAdapter(FragmentManager fm, Context context) {

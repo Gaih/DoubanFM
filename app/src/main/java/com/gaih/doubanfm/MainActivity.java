@@ -1,18 +1,14 @@
 package com.gaih.doubanfm;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 
 import com.gaih.doubanfm.fragment.Fragment01;
-import com.gaih.doubanfm.fragment.Fragment02;
 
 /**
  * Created by gaih on 17-3-31.
@@ -23,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static Context mContext;
 
     Fragment01 mDouban;
-    Fragment02 mFriend;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
